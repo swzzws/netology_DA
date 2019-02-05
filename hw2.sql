@@ -29,6 +29,15 @@ SELECT 'ФИО: Устинова Т.А.';
 
 SELECT
     COUNT (DISTINCT links.movieid)
+FROM public.ratings
+RIGHT JOIN public.links
+ON links.movieid=ratings.movieid
+WHERE ratings.movieid IS NULL;
+
+-- для проверки
+
+SELECT
+    COUNT (DISTINCT links.movieid)
 FROM public.links
 LEFT JOIN public.ratings
 ON links.movieid=ratings.movieid
