@@ -2,28 +2,28 @@ SELECT 'ФИО: Устинова Т.А.';
 
 -- запрос 1.1
 
-SELECT * FROM public.ratings LIMIT 10;
+-- SELECT * FROM public.ratings LIMIT 10;
 
 -- запрос 1.2
 
-SELECT *
-FROM public.links
-WHERE
-imdbid LIKE '%42'
-AND
-(movieid > 100 AND movieid < 1000)
-LIMIT 10;
+-- SELECT *
+-- FROM public.links
+-- WHERE
+-- imdbid LIKE '%42'
+-- AND
+-- (movieid > 100 AND movieid < 1000)
+-- LIMIT 10;
 
 -- запрос 2.1
 
-SELECT 
-links.imdbid
-FROM public.links
-JOIN public.ratings
-    ON links.movieid=ratings.movieid
-WHERE 
-ratings.rating=5
-LIMIT 10;
+-- SELECT 
+-- links.imdbid
+-- FROM public.links
+-- JOIN public.ratings
+    -- ON links.movieid=ratings.movieid
+-- WHERE 
+-- ratings.rating=5
+-- LIMIT 10;
 
 -- запрос 3.1
 
@@ -36,28 +36,28 @@ WHERE ratings.movieid IS NULL;
 
 -- запрос 3.2
 
-SELECT
-    userid,
-    AVG(rating) as avg_rating
-FROM public.ratings
-GROUP BY userid
-HAVING AVG(rating) >= 3.5
-ORDER BY AVG(rating) DESC -- располагаем пользователей в порядке убывания среднего рейтинга
-LIMIT 10;
+-- SELECT
+   -- userid,
+   -- AVG(rating) as avg_rating
+-- FROM public.ratings
+-- GROUP BY userid
+-- HAVING AVG(rating) >= 3.5
+-- ORDER BY AVG(rating) DESC -- располагаем пользователей в порядке убывания среднего рейтинга
+-- LIMIT 10;
 
 -- Т.к в табл. получили, набор значейний где у всех пользователей средний рейтинг =5, проверяем сколько всего пользователей имеют рейтинг > = 5, получили, что 109.
 
-WITH tmp_table
-as
-(SELECT
-    userid,
-    AVG(rating)
-FROM public.ratings
-GROUP BY userid
-HAVING AVG(rating) >= 5)
-SELECT
-    count(userid)
-FROM tmp_table;
+-- WITH tmp_table
+-- as
+-- (SELECT
+   -- userid,
+    -- AVG(rating)
+-- FROM public.ratings
+-- GROUP BY userid
+-- HAVING AVG(rating) >= 5)
+-- SELECT
+    -- count(userid)
+-- FROM tmp_table;
 
 -- запрос 4.1
 
@@ -124,10 +124,4 @@ WHERE ratings.userid IN
 FROM public.ratings
 GROUP BY ratings.userid
 HAVING COUNT(ratings.rating) >= 10)
-
-
-
-
-
-
 
