@@ -125,9 +125,3 @@ FROM public.ratings
 GROUP BY ratings.userid
 HAVING COUNT(ratings.rating) >= 10)
 
-
-
-
-
-
-
