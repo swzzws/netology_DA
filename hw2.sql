@@ -104,6 +104,8 @@ SELECT 'ФИО: Устинова Т.А.';
 -- ORDER BY links.imdbid desc 
 -- LIMIT 10;
 
+-- без Join
+
 SELECT
     DISTINCT links.imdbid
 FROM public.links
@@ -134,6 +136,8 @@ LIMIT 10;
 -- JOIN useractiv_table
 -- ON  ratings.userid=useractiv_table.userid;
 
+-- без Join
+
 WITH useractiv_table 
 as
 (SELECT
@@ -159,10 +163,3 @@ WHERE ratings.userid IN
 -- FROM public.ratings
 -- GROUP BY ratings.userid
 -- HAVING COUNT(ratings.rating) >= 10)
-
-
-
-
-
-
-
